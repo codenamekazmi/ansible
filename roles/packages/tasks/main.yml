@@ -1,0 +1,15 @@
+---
+- name: package management
+  yum: 
+    conf_file: "{{ item.conf_file | default(omit) }}"
+    disable_gpg_check: "{{ item.disable_gpg_check | default(omit) }}"
+    disablerepo: "{{ item.disablerepo | default(omit) }}"
+    enablerepo: "{{ item.enablerepo | default(omit) }}"
+    exclude: "{{ item.exclude | default(omit) }}"
+    list: "{{ item.list | default(omit) }}"
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    update_cache: "{{ item.update_cache | default(omit) }}"
+    validate_certs: "{{ item.validate_certs | default(omit) }}"
+  with_items: "{{ packages_list }}"
+    
