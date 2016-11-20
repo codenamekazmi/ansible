@@ -1,0 +1,11 @@
+---
+- name: Execute a command or script as another user
+  command: "{{ item.free_form }}"
+  args:
+    chdir: "{{ item.chdir | default(omit) }}"
+    executable: "{{ item.executable | default(omit) }}"
+    warn: "{{ item.warn | default(omit) }}"
+    creates: "{{ item.creates | default(omit) }}"
+    removes: "{{ item.removes | default(omit) }}"
+  with_items: "{{ command_list }}"
+  become_user: "{{ user }}"
