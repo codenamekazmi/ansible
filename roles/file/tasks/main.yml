@@ -1,0 +1,37 @@
+---
+
+- name: file mod without file_atts
+  file:
+    follow: "{{ follow | default(omit) }}"
+    force: "{{ force | default (omit) }}"
+    group: "{{ group | default (omit) }}"
+    mode: "{{ mode | default (omit) }}"
+    owner: "{{ owner | default (omit) }}"
+    path: "{{ path }}"
+    recurse: "{{ recurse | default (omit) }}"
+    selevel: "{{ selevel | default (omit) }}"
+    serole: "{{ serole | default (omit) }}"
+    setype: "{{ setype | default (omit) }}"
+    seuser: "{{ seuser | default (omit) }}"
+    src: "{{ src | default (omit) }}"
+    state: "{{ state | default (omit) }}"
+    unsafe_writes: "{{ unsafe_writes | default (omit) }}"
+  when: file_atts is not defined
+    
+- name: file mod with file_atts
+  file:
+    follow: "{{ item.follow | default(omit) }}"
+    force: "{{ item.force | default (omit) }}"
+    group: "{{ item.group | default (omit) }}"
+    mode: "{{ item.mode | default (omit) }}"
+    owner: "{{ item.owner | default (omit) }}"
+    path: "{{ item.path }}"
+    recurse: "{{ item.recurse | default (omit) }}"
+    selevel: "{{ item.selevel | default (omit) }}"
+    serole: "{{ item.serole | default (omit) }}"
+    setype: "{{ item.setype | default (omit) }}"
+    seuser: "{{ item.seuser | default (omit) }}"
+    src: "{{ item.src | default (omit) }}"
+    state: "{{ item.state | default (omit) }}"
+    unsafe_writes: "{{ item.unsafe_writes | default (omit) }}"
+  when: file_list is defined
