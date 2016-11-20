@@ -1,0 +1,18 @@
+---
+- name: template module
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode | default(omit) }}"
+    backup: "{{ item.backup | default(omit) }}"
+    force: "{{ item.force | default(omit) }}"
+    group: "{{ item.group | default(omit) }}"
+    owner: "{{ item.owner | default(omit) }}"
+    selevi: "{{ item.selevi | default(omit) }}"
+    serole: "{{ item.serole | default(omit) }}"
+    setype: "{{ item.setype | default(omit) }}"
+    seuser: "{{ item.seuser | default(omit) }}"
+    unsafe_written: "{{ item.unsafe_written | default(omit) }}"
+    validate: "{{ item.validate | default(omit) }}"
+  with_items: "{{ template_list }}"
+    
