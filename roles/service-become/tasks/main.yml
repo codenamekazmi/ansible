@@ -8,6 +8,6 @@
      runlevel: "{{ item.runlevel | default(omit) }}"
      sleep: "{{ item.sleep | default(omit) }}"
      name: "{{ item.name }}"
-   with_items: "{{ service_list }}"
+   with_items: "{{ service_become_list }}"
    become_user: "{{ user }}"
    
