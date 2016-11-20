@@ -1,0 +1,11 @@
+---
+- name: service mod with attributes as another user
+  service:
+     arguments: "{{ item.arguments | default(omit) }}"
+     enabled: "{{ item.enabled | default(omit) }}"
+     state: "{{ item.state | default(omit) }}"
+     pattern: "{{ item.pattern | default(omit) }}"
+     runlevel: "{{ item.runlevel | default(omit) }}"
+     sleep: "{{ item.sleep | default(omit) }}"
+     name: "{{ item.name }}"
+   with_items: "{{ service_list }}"
